@@ -1,22 +1,17 @@
 # Validation Evidence
 
-This directory contains the validation evidence collected after implementing HSRP version 2.
+This directory contains the validation evidence collected during the implementation and validation of HSRP version 2.
 
-## Objectives
+## Objective
 
-The purpose of these screenshots is to verify:
+The purpose of these screenshots is to verify that the HSRP configuration is working correctly before performing the failover test.
 
-- Active and Standby roles.
-- Virtual gateway availability.
-- End-to-end connectivity.
-- Traffic path before the failover scenario.
-
-## Evidence List
+## Evidence
 
 | File | Description |
 |------|-------------|
-| 01_R2_Active_State.png | R2 operating as the Active HSRP router. |
-| 02_R3_Standby_State.png | R3 operating as the Standby HSRP router. |
-| 03_Ping_Virtual_IP.png | Successful ping to the HSRP virtual IP address. |
-| 04_Ping_Loopback.png | Successful connectivity to the Internet simulated Loopback interface. |
-| 05_Trace_Loopback.png | Trace showing the forwarding path before failover testing. |
+| 01_R2_Active_Show_Standby_Brief.png | Confirms that R2 is operating as the Active router. |
+| 02_R3_Standby_Show_Standby_Brief.png | Confirms that R3 is operating as the Standby router. |
+| 03_Ping_Virtual_IP.png | Verifies successful connectivity to the HSRP virtual IP address. |
+| 04_Ping_Loopback.png | Verifies end-to-end connectivity to the simulated Internet loopback. |
+| 05_Trace_Loopback.png | Shows the forwarding path before the failover scenario. |
