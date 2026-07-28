@@ -4,6 +4,8 @@ hostname R3
 interface GigabitEthernet0/0
  description LAN - Hacia SW1
  ip address 192.168.60.2 255.255.255.0
+ standby version 2
+ standby 10 ip 192.168.60.254
  no shutdown
 !
 
