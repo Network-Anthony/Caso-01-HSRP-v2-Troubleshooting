@@ -1,0 +1,19 @@
+hostname R3
+
+!
+interface GigabitEthernet0/0
+ description LAN - Hacia SW1
+ ip address 192.168.60.2 255.255.255.0
+ no shutdown
+!
+
+interface GigabitEthernet2/0
+ description Enlace hacia R1
+ ip address 10.10.10.6 255.255.255.252
+ no shutdown
+!
+
+router ospf 1
+ network 0.0.0.0 255.255.255.255 area 0
+
+end

@@ -1,0 +1,24 @@
+hostname R1
+
+!
+interface Loopback0
+ description Simula Internet
+ ip address 33.33.33.33 255.255.255.255
+!
+
+interface GigabitEthernet1/0
+ description Enlace hacia R2
+ ip address 10.10.10.1 255.255.255.252
+ no shutdown
+!
+
+interface GigabitEthernet2/0
+ description Enlace hacia R3
+ ip address 10.10.10.5 255.255.255.252
+ no shutdown
+!
+
+router ospf 1
+ network 0.0.0.0 255.255.255.255 area 0
+
+end
