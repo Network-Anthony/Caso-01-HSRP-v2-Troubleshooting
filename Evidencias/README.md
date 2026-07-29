@@ -15,3 +15,18 @@ The purpose of these screenshots is to verify that the HSRP configuration is wor
 | 03_Ping_Virtual_IP.png | Verifies successful connectivity to the HSRP virtual IP address. |
 | 04_Ping_Loopback.png | Verifies end-to-end connectivity to the simulated Internet loopback. |
 | 05_Trace_Loopback.png | Shows the forwarding path before the failover scenario. |
+
+---
+
+# Troubleshooting Evidence
+
+The following screenshots document the failover process and the behavior of HSRP version 2 when preempt is not configured.
+
+| File | Description |
+|------|-------------|
+| 06_R2_Active_Before_Failure.png | Initial state showing R2 operating as the Active router before the simulated failure. |
+| 07_R3_Standby_Before_Failure.png | Initial state showing R3 operating as the Standby router. |
+| 08_R3_Active_After_Failover.png | R3 assumes the Active role after R2 becomes unavailable. |
+| 09_Ping_Continuity_During_Failover.png | Continuous ping demonstrating temporary packet loss and service recovery during failover. |
+| 10_R2_Standby_After_Recovery.png | After R2 recovers, it remains in the Standby state despite having higher priority. |
+| 11_R3_Remains_Active.png | R3 continues operating as the Active router because preempt has not been configured. |
