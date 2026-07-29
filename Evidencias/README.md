@@ -30,3 +30,20 @@ The following screenshots document the failover process and the behavior of HSRP
 | 09_Ping_Continuity_During_Failover.png | Continuous ping demonstrating temporary packet loss and service recovery during failover. |
 | 10_R2_Standby_After_Recovery.png | After R2 recovers, it remains in the Standby state despite having higher priority. |
 | 11_R3_Remains_Active.png | R3 continues operating as the Active router because preempt has not been configured. |
+
+
+## Solution Validation (Preempt Enabled)
+
+| File | Description |
+|------|-------------|
+| 12_Preempt_Configuration.png | HSRP configuration showing the `standby 10 preempt` command enabled on R2. |
+| 13_R3_Active_During_Failover.png | R3 becomes the Active router after the failure of R2. |
+| 14_R2_Reclaims_Active.png | R2 automatically regains the Active role after recovering. |
+| 15_R3_Returns_To_Standby.png | R3 returns to the Standby state after R2 resumes the Active role. |
+
+
+## Summary
+
+This evidence documents the complete lifecycle of the HSRP v2 troubleshooting case study, including the initial deployment, failover validation, root cause identification, and verification of the implemented solution using the **preempt** feature.
+
+The collected screenshots demonstrate both the problem scenario and the successful resolution, providing a complete technical record of the troubleshooting process.
