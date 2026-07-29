@@ -1,0 +1,35 @@
+# Root Cause Analysis
+
+## Overview
+
+Este caso de estudio analiza el comportamiento de HSRP versión 2 durante un escenario de failover y explica por qué el router con mayor prioridad no recuperó automáticamente el rol **Active** al volver a estar operativo.
+
+## Scenario Description
+
+Para este laboratorio se simuló una falla desactivando la interfaz LAN de **R2**, el cual inicialmente operaba como **Active Router**. Como consecuencia, R2 dejó de enviar mensajes **Hello** de HSRP.
+
+Una vez que expiró el **Hold Timer**, **R3** detectó la ausencia del router Active y asumió automáticamente dicho rol, garantizando la disponibilidad de la puerta de enlace virtual (**Virtual Gateway**).
+
+Posteriormente, cuando R2 volvió a estar operativo, no recuperó el rol **Active** a pesar de tener una prioridad superior. En su lugar permaneció como **Standby Router**, ya que la función **preempt** no estaba configurada. De forma predeterminada, HSRP no permite que un router con mayor prioridad recupere automáticamente el rol Active cuando vuelve a incorporarse a la red.
+
+---
+
+## Root Cause
+
+El comportamiento observado no fue causado por un error de configuración ni por un fallo del protocolo. Corresponde al funcionamiento predeterminado de HSRP, donde el router que actualmente posee el rol **Active** continúa reenviando tráfico hasta que ocurra una nueva falla o un router con mayor prioridad tenga habilitada la función **preempt**.
+
+---
+
+## Key Findings
+
+- El proceso de **Failover** de HSRP funcionó correctamente.
+- La conectividad de la red se mantuvo durante la falla simulada.
+- **R3** asumió correctamente el rol **Active** después de dejar de recibir los mensajes **Hello** enviados por R2.
+- **R2** volvió a incorporarse a la red con una prioridad mayor, pero permaneció como **Standby Router**.
+- La ausencia del comando `standby 10 preempt` impidió que R2 recuperara automáticamente el rol **Active**.
+
+---
+
+## Conclusion
+
+El proceso de troubleshooting confirmó que el comportamiento observado corresponde al funcionamiento normal de **HSRP versión 2**. El protocolo mantuvo la disponibilidad del **Virtual Gateway** durante la falla; sin embargo, debido a que la función **preempt** no estaba configurada, el router con mayor prioridad no recuperó automáticamente el rol **Active** al reincorporarse a la red.
